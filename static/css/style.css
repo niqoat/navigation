@@ -38,21 +38,56 @@ body {
 #searchForm {
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
-.search-engine-select {
-    padding: 12px;
+/* 搜索引擎选择器样式 */
+.search-engine-selector {
+    position: relative;
+    min-width: 100px;
+}
+
+.current-engine {
+    padding: 12px 20px;
+    background: white;
     border: 2px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
     cursor: pointer;
-    min-width: 140px;
+    position: relative;
+    transition: all 0.3s;
 }
 
-.search-engine-select:focus {
-    outline: none;
+.current-engine:hover {
     border-color: #3498db;
+}
+
+.engine-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.current-engine.active .engine-options {
+    display: block;
+}
+
+.engine-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.engine-option:hover {
+    background: #f8f9fa;
+    color: #3498db;
 }
 
 #searchInput {
@@ -170,9 +205,13 @@ footer a:hover {
     
     #searchForm {
         flex-direction: column;
+        align-items: stretch;
     }
     
-    .search-engine-select,
+    .search-engine-selector {
+        margin-bottom: 10px;
+    }
+    
     button[type="submit"] {
         width: 100%;
     }
