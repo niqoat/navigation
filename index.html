@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的导航 - 个人导航页面</title>
+    <meta name="description" content="简洁实用的个人导航页面">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部搜索区域 -->
+        <div class="search-section">
+            <div class="logo">
+                <h1>我的导航</h1>
+            </div>
+            <div class="search-box">
+                <div class="search-engines">
+                    <span class="current-engine" id="currentEngine">Google</span>
+                    <div class="engine-options" id="engineOptions">
+                        <div class="engine-item" data-engine="google">Google</div>
+                        <div class="engine-item" data-engine="baidu">百度</div>
+                        <div class="engine-item" data-engine="bing">必应</div>
+                    </div>
+                </div>
+                <form id="searchForm" action="https://www.google.com/search" method="get" target="_blank">
+                    <input type="text" name="q" id="searchInput" placeholder="请输入搜索关键词" autocomplete="off">
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 导航链接区域 -->
+        <div class="nav-section" id="navSection">
+            <!-- 链接将通过JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 个人导航. <a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script src="static/js/links.js"></script>
+    <script>
+        // 搜索引擎切换逻辑
+        document.getElementById('currentEngine').addEventListener('click', function() {
+            document.getElementById('engineOptions').classList.toggle('show');
+        });
+
+        document.querySelectorAll('.engine-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const engine = this.getAttribute('data-engine');
+                const form = document.getElementById('searchForm');
+                const currentEngine = document.getElementById('currentEngine');
+                
+                currentEngine.textContent = this.textContent;
+                
+                switch(engine) {
+                    case 'google':
+                        form.action = 'https://www.google.com/search';
+                        break;
+                    case 'baidu':
+                        form.action = 'https://www.baidu.com/s';
+                        form.querySelector('input').name = 'wd';
+                        break;
+                    case 'bing':
+                        form.action = 'https://www.bing.com/search';
+                        form.querySelector('input').name = 'q';
+                        break;
+                }
+                
+                document.getElementById('engineOptions').classList.remove('show');
+            });
+        });
+
+        // 点击其他地方关闭搜索引擎选项
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-engines')) {
+                document.getElementById('engineOptions').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
