@@ -23,7 +23,7 @@ const navigationData = [
             { name: "谷歌语音", url: "https://voice.google.com/u/0/messages" },
             { name: "123网盘", url: "https://www.123pan.com" },
             { name: "谷歌相册", url: "https://photos.google.com" },
-            { name: "我的博客", url: "https://oatniq.blogspot.com" },
+            { name: "谷歌博客", url: "https://oatniq.blogspot.com" },
             { name: "GitHub", url: "https://github.com" },
             { name: "ChatGPT", url: "https://chat.openai.com" }
         ]
