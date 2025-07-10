@@ -38,7 +38,8 @@ const navigationData = [
             { name: "爱奇艺", url: "https://www.iqiyi.com" },
             { name: "Genspark", url: "https://www.genspark.ai" },
             { name: "TikTok", url: "https://www.tiktok.com" },
-            { name: "Grok", url: "https://grok.com" }
+            { name: "Grok", url: "https://grok.com" },
+            { name: "电报网页", url: "https://web.telegram.org" }
         ]
     },
     {
